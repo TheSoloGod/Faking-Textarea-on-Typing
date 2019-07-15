@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng vui Faking Textarea on Typing</title>
+</head>
+<body>
+    <h2>Type anything slowly</h2>
+    <textarea id="display" rows="10" cols="50" onkeydown="typing()"></textarea>
+    <script>
+        let textDefault = "Bị lừa rồi lêu lêu :P";
+        let chars = textDefault.split('');
+        console.log(chars);
+        let text = "";
+        function typing() {
+            let input = document.getElementById("display").value;
+            for(let i=0; i<=input.length-1; i++){
+                text += textDefault[i];
+                if(i == textDefault.length){
+                    document.getElementById("display").value = "";
+                    text = "";
+                }
+            }
+            document.getElementById("display").value = text;
+            text = "";
+            setTimeout(typing,0);
+        }
+    </script>
+</body>
+</html>
